@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557430715064",
+    "project_id": "proj-trends-confl-word",
+    "storage_bucket": "proj-trends-confl-word.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557430715064:android:4f24d9e7d611ecc4c33a4d",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557430715064-ac1fhfq1hd435jl14cqe4ahaaqap6eok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "***REMOVED***"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557430715064-ac1fhfq1hd435jl14cqe4ahaaqap6eok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
