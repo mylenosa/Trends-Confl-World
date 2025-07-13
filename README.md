@@ -65,9 +65,3 @@ O código está organizado da seguinte forma:
     ```bash
     flutter run
     ```
-
-## Backlog e Próximos Passos
-
-- [ ] **Reimplementar Login com Google:** Restaurar a funcionalidade de login com Google, garantindo a estabilidade na plataforma web.
-- [ ] **Ativar Notificações Push (FCM):** Fazer o deploy da Cloud Function (requer o plano Blaze do Firebase) para que o backend possa enviar notificações sobre novos eventos nos países da watchlist do usuário.
-- [ ] **Cache Offline:** Reavaliar a implementação de um cache offline (com Hive ou Isar) de forma a não gerar conflitos com o estado da aplicação.

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import '../../controllers/event_controller.dart';
-import '../../routes/app_routes.dart'; // 1. Import AppRoutes
+import '../../routes/app_routes.dart';
 
 class MapPage extends GetView<EventController> {
   MapPage({super.key});
+
+  // Read the token securely from environment variables
+  final String _mapboxToken = dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? 'NO_TOKEN';
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,6 @@ class MapPage extends GetView<EventController> {
             point: LatLng(double.parse(event['latitude']), double.parse(event['longitude'])),
             child: GestureDetector(
               onTap: () {
-                // 2. Replaced Snackbar with a BottomSheet
                 _showEventDetailsSheet(context, event);
               },
               child: const Icon(
@@ -50,8 +53,8 @@ class MapPage extends GetView<EventController> {
           children: [
             TileLayer(
               urlTemplate: "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-              additionalOptions: const {
-                'accessToken': '***REMOVED***', // Remember to replace this
+              additionalOptions: {
+                'accessToken': _mapboxToken,
                 'id': 'mapbox/streets-v11',
               },
             ),
@@ -62,7 +65,6 @@ class MapPage extends GetView<EventController> {
     );
   }
 
-  // 3. New method to build and show the bottom sheet
   void _showEventDetailsSheet(BuildContext context, Map<dynamic, dynamic> event) {
     Get.bottomSheet(
       Container(
@@ -91,7 +93,6 @@ class MapPage extends GetView<EventController> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigate to the full details page
                   Get.toNamed(AppRoutes.EVENT_DETAILS, arguments: event);
                 },
                 child: const Text('View Full Details & Notes'),

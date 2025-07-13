@@ -4,17 +4,15 @@ import 'package:get/get.dart';
 import 'app/bindings/initial_binding.dart';
 import 'app/routes/app_pages.dart';
 import 'app/routes/app_routes.dart';
-// Notification service import is no longer needed
-// import 'app/services/notification_service.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart'; // Importe o pacote
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // Notification service initialization is removed
-  // await Get.putAsync(() => NotificationService().init());
 
   runApp(const MyApp());
 }
